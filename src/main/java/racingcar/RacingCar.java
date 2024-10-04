@@ -20,8 +20,9 @@ public class RacingCar implements Car{
     }
 
     @Override
-    public void setCarPosition(int num) {
-        carPosition = num;
+    public void increaseCarDistance(int num) {
+        if(num >= Config.ADVANCE_THRESHOLD)
+            carPosition++;
     }
 
     @Override
