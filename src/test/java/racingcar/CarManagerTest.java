@@ -3,32 +3,28 @@ package racingcar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CarManagerTest {
-
-    @BeforeEach
-    void beforeEach() {
-        CarManager.carClear();
-    }
-
 
     @Test
     void 한대의_자동차_전진() {
 
         // given
-        CarManager.addCar("병훈");
+        CarManager carManager = new CarManager();
+        carManager.addCar("병훈");
+
+        NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD;
 
         // when
-        CarManager.timePass(Config.ADVANCE_THRESHOLD);
+        carManager.timePass(numberGenerator);
 
-        List<Car> carList = CarManager.getCarList();
+        List<Car> carList = carManager.getCarList();
         Car car = carList.get(0);
 
         // then
         assertThat(carList.size()).isEqualTo(1);
-        assertThat(car.getCarPosition()).isEqualTo(Config.ADVANCE_THRESHOLD);
+        assertThat(car.getCarPosition()).isEqualTo(1);
 
     }
 
@@ -36,21 +32,22 @@ class CarManagerTest {
     void 다수의_자동차_전진() {
 
         // given
-        CarManager.addCar("병훈");
-        CarManager.addCar("재훈");
+        CarManager carManager = new CarManager();
+        carManager.addCar("병훈");
+        carManager.addCar("재훈");
+        NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD;
 
         // when
-        CarManager.timePass(Config.ADVANCE_THRESHOLD);
-
-        List<Car> carList = CarManager.getCarList();
+        carManager.timePass(numberGenerator);
+        List<Car> carList = carManager.getCarList();
 
         Car car1 = carList.get(0);
         Car car2 = carList.get(1);
 
         // then
         assertThat(carList.size()).isEqualTo(2);
-        assertThat(car1.getCarPosition()).isEqualTo(Config.ADVANCE_THRESHOLD);
-        assertThat(car2.getCarPosition()).isEqualTo(Config.ADVANCE_THRESHOLD);
+        assertThat(car1.getCarPosition()).isEqualTo(1);
+        assertThat(car2.getCarPosition()).isEqualTo(1);
 
     }
 
@@ -58,12 +55,15 @@ class CarManagerTest {
     void 한대의_자동차_멈춤() {
 
         // given
-        CarManager.addCar("병훈");
+        CarManager carManager = new CarManager();
+        carManager.addCar("병훈");
+
+        NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD - 1;
 
         // when
-        CarManager.timePass(Config.ADVANCE_THRESHOLD - 1);
+        carManager.timePass(numberGenerator);
 
-        List<Car> carList = CarManager.getCarList();
+        List<Car> carList = carManager.getCarList();
         Car car = carList.get(0);
 
         // then
@@ -76,13 +76,16 @@ class CarManagerTest {
     void 다수의_자동차_멈춤() {
 
         // given
-        CarManager.addCar("병훈");
-        CarManager.addCar("재훈");
+        CarManager carManager = new CarManager();
+        carManager.addCar("병훈");
+        carManager.addCar("재훈");
+
+        NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD - 1;
 
         // when
-        CarManager.timePass(Config.ADVANCE_THRESHOLD - 1);
+        carManager.timePass(numberGenerator);
 
-        List<Car> carList = CarManager.getCarList();
+        List<Car> carList = carManager.getCarList();
 
         Car car1 = carList.get(0);
         Car car2 = carList.get(1);
