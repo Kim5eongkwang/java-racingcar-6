@@ -1,40 +1,29 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarManager {
-    private static final List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
-    public static void addCar(String carName) {
+    public void addCar(String carName) {
         cars.add(new RacingCar(carName));
     }
 
-    public static void timePass() {
+    public void timePass(NumberGenerator generator) {
         for (Car car : cars) {
-            moveCar(car, Randoms.pickNumberInRange(0, 9));
+            moveCar(car, generator.getNumber());
         }
     }
 
-    public static void timePass(int distance) {
-        for (Car car : cars) {
-            moveCar(car, distance);
+    private void moveCar(Car car, int number) {
+        if (number >= Config.ADVANCE_THRESHOLD) {
+            car.increaseCarDistance();
         }
     }
 
-    public static void moveCar(Car car, int distance) {
-        if (distance >= Config.ADVANCE_THRESHOLD) {
-            car.setCarPosition(distance + car.getCarPosition());
-        }
-    }
-
-    public static List<Car> getCarList() {
+    public List<Car> getCarList() {
         return cars;
-    }
-
-    public static void carClear() {
-        cars.clear();
     }
 
 

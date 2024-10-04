@@ -1,6 +1,6 @@
 package racingcar;
 
-public class RacingCar implements Car{
+public class RacingCar implements Car {
 
     private String carName;
     private int carPosition;
@@ -10,7 +10,7 @@ public class RacingCar implements Car{
         setCarName(name);
     }
 
-    public RacingCar(){
+    public RacingCar() {
         carPosition = 0;
     }
 
@@ -20,9 +20,8 @@ public class RacingCar implements Car{
     }
 
     @Override
-    public void increaseCarDistance(int num) {
-        if(num >= Config.ADVANCE_THRESHOLD)
-            carPosition++;
+    public void increaseCarDistance() {
+        carPosition++;
     }
 
     @Override
