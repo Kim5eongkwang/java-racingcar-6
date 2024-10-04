@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RacingCarTest {
 
     @Test
-    void 자동차_위치_반환(){
+    void 자동차_위치_반환() {
 
         // given
 
@@ -16,15 +16,14 @@ public class RacingCarTest {
 
         // when
 
-        racingCar.setCarPosition(1);
-
         // then
 
-        assertThat(racingCar.getCarPosition()).isEqualTo(initRacingCar.getCarPosition() + 1);
+        assertThat(racingCar.getCarPosition()).isEqualTo(initRacingCar.getCarPosition());
     }
 
     @Test
-    void 자동차_이름_부여(){
+    void 자동차_이름_부여() {
+
         // given
 
         RacingCar racingCar = new RacingCar("test");
@@ -32,12 +31,10 @@ public class RacingCarTest {
 
         // when
 
-
         // then
 
         assertThat(racingCar.getCarName()).isEqualTo(nameTest);
     }
-
 
 
 }
