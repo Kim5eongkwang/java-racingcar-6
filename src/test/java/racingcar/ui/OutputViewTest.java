@@ -54,19 +54,33 @@ class OutputViewTest {
     @Test
     void 단독_우승자_안내_문구() {
         //given
+        OutputView outputView = new OutputView();
+        Car car = new RacingCar("a");
+        List<Car> cars = new ArrayList<>();
+        cars.add(car);
 
         //when
+        outputView.printWinner(cars);
 
         //then
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("최종 우승자 : a");
     }
 
     @Test
     void 공동_우승자_안내_문구() {
         //given
+        OutputView outputView = new OutputView();
+        Car car1 = new RacingCar("a");
+        Car car2 = new RacingCar("b");
+        List<Car> cars = new ArrayList<>();
+        cars.add(car1);
+        cars.add(car2);
 
         //when
+        outputView.printWinner(cars);
 
         //then
+        assertThat(outputStreamCaptor.toString().trim()).isEqualTo("최종 우승자 : a, b");
 
     }
 
