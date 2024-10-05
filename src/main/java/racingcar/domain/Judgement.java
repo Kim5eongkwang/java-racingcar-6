@@ -9,12 +9,12 @@ public class Judgement {
 
     private final List<Car> cars;
     private final List<Car> winnerList;
-    private final int maxDistance;
+    private int maxDistance;
 
     public Judgement(CarManager carManager) {
         cars = carManager.getCarList();
         winnerList = new ArrayList<>();
-        maxDistance = findMaxDistance();
+        maxDistance = 0;
     }
 
     private int findMaxDistance() {
@@ -33,6 +33,8 @@ public class Judgement {
 
     public List<Car> getWinnerList() {
         winnerList.clear();
+        maxDistance = findMaxDistance();
+
         for (Car car : cars) {
             addWinnerElement(car);
         }
