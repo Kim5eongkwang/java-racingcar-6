@@ -21,6 +21,20 @@ public class OutputView {
         print("\n");
     }
 
+    public void printWinner(List<Car> cars) {
+        print(Config.WINNER_MASSAGE);
+        if (cars.size() == 1) {
+            Car car = cars.get(0);
+            print(car.getCarName());
+            return;
+        }
+        for (int i = 0; i < cars.size() - 1; i++) {
+            Car car = cars.get(i);
+            print(car.getCarName() + ", ");
+        }
+        print(cars.get(cars.size() - 1).getCarName());
+    }
+
     private void printCarStatus(Car car) {
         print(car.getCarName() + " : ");
         printCarDistance(car);
