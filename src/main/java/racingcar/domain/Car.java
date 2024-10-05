@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public interface Car {
     void setCarName(String name);
