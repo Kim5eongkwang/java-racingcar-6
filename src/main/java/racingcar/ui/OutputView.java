@@ -14,6 +14,10 @@ public class OutputView {
         println(Config.INPUT_MOVE_COUNT_MESSAGE);
     }
 
+    public void printResultMessage() {
+        println(Config.RESULT_MASSAGE);
+    }
+
     public void printResult(List<Car> cars) {
         for (Car car : cars) {
             printCarStatus(car);
