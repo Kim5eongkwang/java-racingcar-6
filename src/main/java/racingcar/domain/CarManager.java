@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.global.constant.Config;
 
 public class CarManager {
     private final List<Car> cars = new ArrayList<>();
