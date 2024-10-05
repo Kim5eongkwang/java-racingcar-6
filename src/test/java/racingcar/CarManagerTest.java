@@ -12,7 +12,7 @@ class CarManagerTest {
 
         // given
         CarManager carManager = new CarManager();
-        carManager.addCar("병훈");
+        carManager.addCar(new RacingCar("병훈"));
 
         NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD;
 
@@ -33,8 +33,8 @@ class CarManagerTest {
 
         // given
         CarManager carManager = new CarManager();
-        carManager.addCar("병훈");
-        carManager.addCar("재훈");
+        carManager.addCar(new RacingCar("병훈"));
+        carManager.addCar(new RacingCar("재훈"));
         NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD;
 
         // when
@@ -56,7 +56,7 @@ class CarManagerTest {
 
         // given
         CarManager carManager = new CarManager();
-        carManager.addCar("병훈");
+        carManager.addCar(new RacingCar("병훈"));
 
         NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD - 1;
 
@@ -77,8 +77,8 @@ class CarManagerTest {
 
         // given
         CarManager carManager = new CarManager();
-        carManager.addCar("병훈");
-        carManager.addCar("재훈");
+        carManager.addCar(new RacingCar("병훈"));
+        carManager.addCar(new RacingCar("재훈"));
 
         NumberGenerator numberGenerator = () -> Config.ADVANCE_THRESHOLD - 1;
 

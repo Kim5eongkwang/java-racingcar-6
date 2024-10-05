@@ -6,8 +6,8 @@ import java.util.List;
 public class CarManager {
     private final List<Car> cars = new ArrayList<>();
 
-    public void addCar(String carName) {
-        cars.add(new RacingCar(carName));
+    public void addCar(Car car) {
+        cars.add(car);
     }
 
     public void timePass(NumberGenerator generator) {
